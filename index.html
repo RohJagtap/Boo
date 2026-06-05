@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Boo Boo ❤️</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    height:100vh;
+    overflow:hidden;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(-45deg,#ff758c,#ff7eb3,#ff4d6d,#ff8fa3);
+    background-size:400% 400%;
+    animation:bgMove 12s ease infinite;
+    font-family:Arial, sans-serif;
+}
+
+@keyframes bgMove{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+.container{
+    text-align:center;
+    color:white;
+    max-width:700px;
+    padding:20px;
+    z-index:2;
+}
+
+.heart{
+    position:relative;
+    width:120px;
+    height:120px;
+    background:#ff1744;
+    transform:rotate(-45deg);
+    margin:40px auto;
+    animation:heartbeat 1.2s infinite;
+}
+
+.heart::before,
+.heart::after{
+    content:'';
+    position:absolute;
+    width:120px;
+    height:120px;
+    background:#ff1744;
+    border-radius:50%;
+}
+
+.heart::before{
+    top:-60px;
+    left:0;
+}
+
+.heart::after{
+    left:60px;
+    top:0;
+}
+
+@keyframes heartbeat{
+    0%,100%{
+        transform:rotate(-45deg) scale(1);
+    }
+    50%{
+        transform:rotate(-45deg) scale(1.15);
+    }
+}
+
+h1{
+    font-size:42px;
+    margin-bottom:20px;
+}
+
+.message{
+    font-size:22px;
+    line-height:1.7;
+    text-shadow:0 0 10px rgba(0,0,0,0.2);
+}
+
+/* Floating Hearts */
+
+.floating-heart{
+    position:absolute;
+    bottom:-50px;
+    color:white;
+    font-size:20px;
+    animation:floatUp linear infinite;
+    opacity:0.8;
+}
+
+@keyframes floatUp{
+    0%{
+        transform:translateY(0) rotate(0deg);
+        opacity:0;
+    }
+
+    10%{
+        opacity:1;
+    }
+
+    100%{
+        transform:translateY(-110vh) rotate(360deg);
+        opacity:0;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="hearts"></div>
+
+<div class="container">
+
+    <div class="heart"></div>
+
+    <h1>I'm Sorry Boo Boo ❤️</h1>
+
+    <div class="message">
+        I never meant to hurt you or make you feel that I doubted you.
+        When I asked about your loyalty, it came from love, not suspicion.
+        <br><br>
+
+        I only wanted to hear the beautiful things about us because
+        I am proud of what we share and proud to love you.
+        <br><br>
+
+        You are incredibly special to me, and I miss you more than
+        words can explain.
+        <br><br>
+
+        If you give me one more chance, I promise to be more mature,
+        more understanding, and a better partner for us.
+        <br><br>
+
+        ❤️ Forever yours ❤️
+    </div>
+
+</div>
+
+<script>
+
+const heartsContainer = document.getElementById("hearts");
+
+function createHeart(){
+
+    const heart = document.createElement("div");
+    heart.classList.add("floating-heart");
+
+    heart.innerHTML = "❤️";
+
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (15 + Math.random()*30) + "px";
+
+    const duration = 5 + Math.random()*8;
+    heart.style.animationDuration = duration + "s";
+
+    heartsContainer.appendChild(heart);
+
+    setTimeout(()=>{
+        heart.remove();
+    }, duration * 1000);
+}
+
+setInterval(createHeart, 300);
+
+</script>
+
+</body>
+</html>
